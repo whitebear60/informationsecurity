@@ -1,3 +1,5 @@
+const $ = (id) => document.getElementById(id);
+
 class Caesar {
     constructor(shift = 3, keyword, alphabet) {
         this.shift = shift;
@@ -32,8 +34,8 @@ class Caesar {
         return this.alphabet[Ci];
     }
 
-    decrypt(ciphertext) {
-        return this.encrypt(ciphertext, -this.shift); // Decrypt by shifting in the opposite direction
+    decrypt(ciphertext, shift = this.shift) {
+        return this.encrypt(ciphertext, -shift); // Decrypt by shifting in the opposite direction
     }
 }
 
@@ -94,11 +96,11 @@ const caesar = new Caesar(10);
 console.log(caesar.encrypt('захист'));
 console.log(caesar.decrypt('піврюя'));
 
-const caesarInput = document.getElementById('caesar-input');
-const caesarOutput = document.getElementById('caesar-output');
-const caesarShift = document.getElementById('caesar-shift');
-const caesarEncryptBtn = document.getElementById('caesar-encrypt');
-const caesarDecryptBtn = document.getElementById('caesar-decrypt');
+const caesarInput = $('caesar-input');
+const caesarOutput = $('caesar-output');
+const caesarShift = $('caesar-shift');
+const caesarEncryptBtn = $('caesar-encrypt');
+const caesarDecryptBtn = $('caesar-decrypt');
 
 const caesarEncryptFn = () => {
     const plaintext = caesarInput.value;
@@ -126,16 +128,19 @@ caesarDecryptBtn.addEventListener('click', (e) => {
 });
 
 // Vigenere cipher UI elements
-const vigenereInput = document.getElementById('vigenere-input');
-const vigenereOutput = document.getElementById('vigenere-output');
-const vigenereKeyInput = document.getElementById('vigenere-key');
-const vigenereEncryptBtn = document.getElementById('vigenere-encrypt');
-const vigenereDecryptBtn = document.getElementById('vigenere-decrypt');
+const vigenereInput = $('vigenere-input');
+const vigenereOutput = $('vigenere-output');
+const vigenereKeyInput = $('vigenere-key');
+const vigenereEncryptBtn = $('vigenere-encrypt');
+const vigenereDecryptBtn = $('vigenere-decrypt');
+
+
+const vigenere = new Vigenere();
 
 const vigenereEncryptFn = () => {
     const key = vigenereKeyInput.value;
     const plaintext = vigenereInput.value;
-    const vigenere = new Vigenere(key);
+    vigenere.key = key;
     const ciphertext = vigenere.encrypt(plaintext);
     vigenereOutput.value = ciphertext;
     vigenereOutput.classList.remove('d-none');
@@ -143,7 +148,7 @@ const vigenereEncryptFn = () => {
 const vigenereDecryptFn = () => {
     const key = vigenereKeyInput.value;
     const ciphertext = vigenereInput.value;
-    const vigenere = new Vigenere(key);
+    vigenere.key = key;
     const plaintext = vigenere.decrypt(ciphertext);
     vigenereOutput.value = plaintext;
     vigenereOutput.classList.remove('d-none');
