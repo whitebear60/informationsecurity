@@ -116,8 +116,14 @@ const caesarDecryptFn = () => {
     caesarOutput.classList.remove('d-none');
 }
 
-caesarEncryptBtn.addEventListener('click', caesarEncryptFn);
-caesarDecryptBtn.addEventListener('click', caesarDecryptFn);
+caesarEncryptBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    caesarEncryptFn();
+});
+caesarDecryptBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    caesarDecryptFn();
+});
 
 // Vigenere cipher UI elements
 const vigenereInput = document.getElementById('vigenere-input');
@@ -143,5 +149,12 @@ const vigenereDecryptFn = () => {
     vigenereOutput.classList.remove('d-none');
 }
 
-vigenereEncryptBtn.addEventListener('click', vigenereEncryptFn);
-vigenereDecryptBtn.addEventListener('click', vigenereDecryptFn);
+vigenereEncryptBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    vigenereEncryptFn();
+});
+
+vigenereDecryptBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    vigenereDecryptFn();
+});
