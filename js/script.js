@@ -5,8 +5,8 @@ const DEFAULT_ALPHABET = 'абвгдеєжзиіїйклмнопрстуфхцч
 class Caesar {
     constructor(shift = 3, keyword, alphabet) {
         this.shift = shift;
-        this.keyword = keyword.toLowerCase() || '';
-        this.alphabet = alphabet.toLowerCase() || DEFAULT_ALPHABET;
+        this.keyword = keyword ? keyword.toLowerCase() : '';
+        this.alphabet = alphabet ? alphabet.toLowerCase() : DEFAULT_ALPHABET;
     }
 
     encrypt(plaintext, shift = this.shift) {
@@ -40,8 +40,8 @@ class Vigenere {
     });
 
     constructor(key, alphabet) {
-        this.key = key.toLowerCase() || '';
-        this.alphabet = alphabet.toLowerCase() || DEFAULT_ALPHABET + " ";
+        this.key = key ? key.toLowerCase() : '';
+        this.alphabet = alphabet ? alphabet.toLowerCase() : DEFAULT_ALPHABET + " ";
     }
 
     generateFullKey(text) {
