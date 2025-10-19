@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/bootstrap.5.3.8.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <script src="js/bootstrap.5.3.8.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous" defer></script>
+    <script src="js/script.js" defer></script>
+    <title>Lab 1: Caesar and Vigenere Cipher</title>
+</head>
+<body>
+    <div class="container text-center">
+        <h1 class="mt-5">Lab 1: Caesar and Vigenere Cipher</h1>
+        <ul class="nav nav-tabs mt-5" role="tablist">
+            <li class="nav-item">
+                <button 
+                    class="nav-link active"
+                    id="caesar-tab"
+                    data-bs-toggle="tab"
+                    data-bs-target="#caesar"
+                    type="button"
+                    role="tab"
+                    aria-controls="caesar-tab"
+                    aria-selected="true"
+                >
+                    Caesar Cipher
+                </button>
+            </li>
+            <li class="nav-item">
+                <button 
+                    class="nav-link"
+                    id="vigenere-tab"
+                    data-bs-toggle="tab"
+                    data-bs-target="#vigenere"
+                    type="button"
+                    role="tab"
+                    aria-controls="vigenere-tab"
+                    aria-selected="true"
+                >
+                    Vigenere Cipher
+                </button>
+            </li>
+        </ul>
+        <div class="tab-content mt-3">
+            <div 
+                class="tab-pane fade show active"
+                id="caesar"
+                role="tabpanel"
+                aria-labelledby="caesar-tab"
+            >
+                <form action="#">
+                    <input type="text" class="form-control mb-3" id="caesar-input" placeholder="Enter text to encrypt/decrypt">
+                    <input type="number" class="form-control mb-3" id="caesar-shift" placeholder="Enter shift value">
+                    <button class="btn btn-primary me-2" id="caesar-encrypt" type="submit">Encrypt</button>
+                    <button class="btn btn-secondary" id="caesar-decrypt" type="submit">Decrypt</button>
+                    <input type="text" class="form-control-plaintext mt-3 d-none" id="caesar-output" readonly>
+                </form>
+            </div>
+            <div 
+                class="tab-pane fade"
+                id="vigenere"
+                role="tabpanel"
+                aria-labelledby="vigenere-tab"
+            >
+                <form action="#">
+                    <input type="text" class="form-control mb-3" id="vigenere-input" placeholder="Enter text to encrypt/decrypt">
+                    <input type="text" class="form-control mb-3" id="vigenere-key" placeholder="Enter keyword">
+                    <button class="btn btn-primary me-2" id="vigenere-encrypt" type="submit">Encrypt</button>
+                    <button class="btn btn-secondary" id="vigenere-decrypt" type="submit">Decrypt</button>
+                    <input type="text" class="form-control-plaintext mt-3" id="vigenere-output" readonly>
+                </form>
+            </div>
+    </div>
+</body>
+</html>
