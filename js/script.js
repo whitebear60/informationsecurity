@@ -1,18 +1,12 @@
 const $ = (id) => document.getElementById(id);
 
+const DEFAULT_ALPHABET = 'абвгдеєжзиіїйклмнопрстуфхцчшщьюя';
+
 class Caesar {
     constructor(shift = 3, keyword, alphabet) {
         this.shift = shift;
-        if (keyword) {
-            this.keyword = keyword;
-        } else {
-            this.keyword = 'DEFAULT';
-        }
-        if (alphabet) {
-            this.alphabet = alphabet;
-        } else {
-            this.alphabet = 'абвгдеєжзиіїйклмнопрстуфхцчшщьюя';
-        }
+        this.keyword = keyword || '';
+        this.alphabet = alphabet || DEFAULT_ALPHABET;
     }
 
     encrypt(plaintext, shift = this.shift) {
@@ -47,7 +41,7 @@ class Vigenere {
 
     constructor(key = '', alphabet) {
         this.key = key;
-        this.alphabet = alphabet || 'абвгдеєжзиіїйклмнопрстуфхцчшщьюя ';
+        this.alphabet = alphabet || DEFAULT_ALPHABET + " ";
     }
 
     generateFullKey(text) {
@@ -103,6 +97,7 @@ const caesarEncryptBtn = $('caesar-encrypt');
 const caesarDecryptBtn = $('caesar-decrypt');
 
 const caesarEncryptFn = () => {
+    caesar.alphabet = $('caesar-alphabet').value || caesar.alphabet;
     const plaintext = caesarInput.value;
     const shift = parseInt(caesarShift.value, 10);
     const ciphertext = caesar.encrypt(plaintext, shift);
@@ -111,6 +106,7 @@ const caesarEncryptFn = () => {
 }
 
 const caesarDecryptFn = () => {
+    caesar.alphabet = $('caesar-alphabet').value || caesar.alphabet;
     const ciphertext = caesarInput.value;
     const shift = parseInt(caesarShift.value, 10);
     const plaintext = caesar.decrypt(ciphertext, shift);
@@ -138,6 +134,7 @@ const vigenereDecryptBtn = $('vigenere-decrypt');
 const vigenere = new Vigenere();
 
 const vigenereEncryptFn = () => {
+    vigenere.alphabet = $('vigenere-alphabet').value || vigenere.alphabet;
     const key = vigenereKeyInput.value;
     const plaintext = vigenereInput.value;
     vigenere.key = key;
@@ -146,6 +143,7 @@ const vigenereEncryptFn = () => {
     vigenereOutput.classList.remove('d-none');
 }
 const vigenereDecryptFn = () => {
+    vigenere.alphabet = $('vigenere-alphabet').value || vigenere.alphabet;
     const key = vigenereKeyInput.value;
     const ciphertext = vigenereInput.value;
     vigenere.key = key;
