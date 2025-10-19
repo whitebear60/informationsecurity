@@ -5,8 +5,8 @@ const DEFAULT_ALPHABET = 'абвгдеєжзиіїйклмнопрстуфхцч
 class Caesar {
     constructor(shift = 3, keyword, alphabet) {
         this.shift = shift;
-        this.keyword = keyword || '';
-        this.alphabet = alphabet || DEFAULT_ALPHABET;
+        this.keyword = keyword.toLowerCase() || '';
+        this.alphabet = alphabet.toLowerCase() || DEFAULT_ALPHABET;
     }
 
     encrypt(plaintext, shift = this.shift) {
@@ -39,9 +39,9 @@ class Vigenere {
         DECRYPT: -1
     });
 
-    constructor(key = '', alphabet) {
-        this.key = key;
-        this.alphabet = alphabet || DEFAULT_ALPHABET + " ";
+    constructor(key, alphabet) {
+        this.key = key.toLowerCase() || '';
+        this.alphabet = alphabet.toLowerCase() || DEFAULT_ALPHABET + " ";
     }
 
     generateFullKey(text) {
@@ -98,7 +98,7 @@ const caesarDecryptBtn = $('caesar-decrypt');
 
 const caesarEncryptFn = () => {
     caesar.alphabet = $('caesar-alphabet').value || caesar.alphabet;
-    const plaintext = caesarInput.value;
+    const plaintext = caesarInput.value.toLowerCase();
     const shift = parseInt(caesarShift.value, 10);
     const ciphertext = caesar.encrypt(plaintext, shift);
     caesarOutput.value = ciphertext;
@@ -106,8 +106,8 @@ const caesarEncryptFn = () => {
 }
 
 const caesarDecryptFn = () => {
-    caesar.alphabet = $('caesar-alphabet').value || caesar.alphabet;
-    const ciphertext = caesarInput.value;
+    caesar.alphabet = $('caesar-alphabet').value.toLowerCase() || caesar.alphabet.toLowerCase();
+    const ciphertext = caesarInput.value.toLowerCase();
     const shift = parseInt(caesarShift.value, 10);
     const plaintext = caesar.decrypt(ciphertext, shift);
     caesarOutput.value = plaintext;

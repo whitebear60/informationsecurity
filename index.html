@@ -11,6 +11,8 @@
 <body>
     <div class="container text-center">
         <h1 class="mt-5">Lab 1: Caesar and Vigenere Cipher</h1>
+        <h4 class="mt-5">Note: All operations are case-insensitive and will be performed in lower case only.</h4>
+        <h4 class="mt-5">The inputs will be transformed into lower case if necessary.</h4>
         <ul class="nav nav-tabs mt-5" role="tablist">
             <li class="nav-item">
                 <button 
@@ -49,6 +51,7 @@
                 aria-labelledby="caesar-tab"
             >
                 <form action="#">
+                    <input type="text" class="form-control mb-3" id="caesar-alphabet" placeholder="Caesar cipher alphabet" value="абвгдеєжзиіїйклмнопрстуфхцчшщьюя">
                     <input type="text" class="form-control mb-3" id="caesar-input" placeholder="Enter text to encrypt/decrypt">
                     <input type="number" class="form-control mb-3" id="caesar-shift" placeholder="Enter shift value">
                     <button class="btn btn-primary me-2" id="caesar-encrypt" type="submit">Encrypt</button>
@@ -63,6 +66,7 @@
                 aria-labelledby="vigenere-tab"
             >
                 <form action="#">
+                    <input type="text" class="form-control mb-3" id="vigenere-alphabet" placeholder="Vigenere cipher alphabet" value="абвгдеєжзиіїйклмнопрстуфхцчшщьюя">
                     <input type="text" class="form-control mb-3" id="vigenere-input" placeholder="Enter text to encrypt/decrypt">
                     <input type="text" class="form-control mb-3" id="vigenere-key" placeholder="Enter keyword">
                     <button class="btn btn-primary me-2" id="vigenere-encrypt" type="submit">Encrypt</button>
